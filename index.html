@@ -4,6 +4,45 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Location-based AR.js demo</title>
+  <!-- <script>
+    // 成功した時の関数
+    function successFunc(position) {
+
+      let aText = document.querySelector('#a-text')
+      aText.setAttribute('gps-entity-place', "latitude: " + position.coords.latitude + "; longitude: " + position.coords.longitude + ";")
+
+      // 緯度をアラート表示
+      alert(position.coords.latitude);
+
+      // 経度をアラート表示
+      alert(position.coords.longitude);
+    }
+
+    // 失敗した時の関数
+    function errorFunc(error) {
+      // エラーコードのメッセージを定義
+      var errorMessage = {
+        0: "原因不明のエラーが発生しました…。",
+        1: "位置情報の取得が許可されませんでした…。",
+        2: "電波状況などで位置情報が取得できませんでした…。",
+        3: "位置情報の取得に時間がかかり過ぎてタイムアウトしました…。",
+      };
+
+      // エラーコードに合わせたエラー内容をアラート表示
+      alert(errorMessage[error.code]);
+    }
+
+    // オプション・オブジェクト
+    var optionObj = {
+      "enableHighAccuracy": false,
+      "timeout": 8000,
+      "maximumAge": 5000,
+    };
+
+    // 現在位置を取得する
+    navigator.geolocation.getCurrentPosition(successFunc, errorFunc, optionObj);
+
+  </script> -->
   <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
   <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
   <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
@@ -11,48 +50,9 @@
 
 <body style="margin: 0; overflow: hidden;">
   <a-scene vr-mode-ui="enabled: false" embedded arjs="sourceType: webcam; debugUIEnabled: false;">
-    <a-text id="a-text" value="This content will always face you." look-at="[gps-camera]" scale="50 50 50" gps-entity-place="latitude: <add-your-latitude>; longitude: <add-your-longitude>;"></a-text>
+    <a-text id="a-text" value="This content will always face you." look-at="[gps-camera]" scale="150 150 150" gps-entity-place="latitude: 33.8888172; longitude: 130.8793043;"></a-text>
     <a-camera gps-camera rotation-reader> </a-camera>
   </a-scene>
 </body>
-<script>
-  // 成功した時の関数
-  function successFunc(position) {
-
-    let aText = document.querySelector('#a-text')
-    aText.setAttribute('gps-entity-place', "latitude: " + position.coords.latitude + "; longitude: " + position.coords.longitude + ";")
-
-    // 緯度をアラート表示
-    alert(position.coords.latitude);
-
-    // 経度をアラート表示
-    alert(position.coords.longitude);
-  }
-
-  // 失敗した時の関数
-  function errorFunc(error) {
-    // エラーコードのメッセージを定義
-    var errorMessage = {
-      0: "原因不明のエラーが発生しました…。",
-      1: "位置情報の取得が許可されませんでした…。",
-      2: "電波状況などで位置情報が取得できませんでした…。",
-      3: "位置情報の取得に時間がかかり過ぎてタイムアウトしました…。",
-    };
-
-    // エラーコードに合わせたエラー内容をアラート表示
-    alert(errorMessage[error.code]);
-  }
-
-  // オプション・オブジェクト
-  var optionObj = {
-    "enableHighAccuracy": false,
-    "timeout": 8000,
-    "maximumAge": 5000,
-  };
-
-  // 現在位置を取得する
-  navigator.geolocation.getCurrentPosition(successFunc, errorFunc, optionObj);
-
-</script>
 
 </html>
