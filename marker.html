@@ -3,17 +3,6 @@
 <script src="https://aframe.io/releases/0.9.0/aframe.min.js"></script>
 <script src="https://rawgit.com/jeromeetienne/AR.js/master/aframe/build/aframe-ar.min.js"></script>
 <script src="https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
-
-<body style="margin: 0px; overflow: hidden;">
-  <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;">
-    <a-marker markerhandler emitevents="true" cursor="rayOrigin: mouse" id="animated-marker" type="pattern" url="pattern-marker.patt">
-      <a-box id="animated-model" position="0 -1 0" scale="1 1 1" color="grey"></a-box>
-    </a-marker>
-    <a-entity camera></a-entity>
-  </a-scene>
-</body>
-
-</html>
 <script>
   AFRAME.registerComponent('markerhandler', {
 
@@ -34,3 +23,14 @@
     }
   });
 </script>
+
+<body style="margin: 0px; overflow: hidden;">
+  <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;">
+    <a-marker markerhandler emitevents="true" cursor="rayOrigin: mouse" id="animated-marker" type="pattern" url="pattern-marker.patt">
+      <a-box id="animated-model" position="0 -1 0" scale="1 1 1" color="grey"></a-box>
+    </a-marker>
+    <a-entity camera></a-entity>
+  </a-scene>
+</body>
+
+</html>
