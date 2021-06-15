@@ -38,7 +38,7 @@
       <a-asset-item id="uribo" src="NEWOPEN.glb"></a-asset-item>
     </a-assets>
     <a-marker registerevents emitevents="true" cursor="rayOrigin: mouse" id="animated-marker" type="pattern" url="pattern-marker.patt">
-      <a-entity id="animated-model" position="0 -1 0" gltf-model="#uribo" scale="0.1 0.1 0.1"></a-entity>
+      <a-entity id="animated-model" rotation="0 0 0" position="0 -1 0" gltf-model="#uribo" scale="0.1 0.1 0.1"></a-entity>
     </a-marker>
     <a-entity camera></a-entity>
   </a-scene>
@@ -106,7 +106,7 @@
   $("#scale").on("input", function (e) {
     var range = e.target
     $('#scale_label').text(range.value)
-    box.setAttribute('rotation', `${range.value} ${range.value} ${range.value}`);
+    box.setAttribute('scale', `${range.value} ${range.value} ${range.value}`);
   })
 </script>
 
