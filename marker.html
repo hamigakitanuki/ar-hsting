@@ -43,16 +43,39 @@
     <a-entity camera></a-entity>
   </a-scene>
   <div class="option">
-    <input id="range_x" type="range" min="0" max="365">
-    <input id="range_y" type="range" min="0" max="365">
-    <input id="range_z" type="range" min="0" max="365">
+    <ul>
+      <li>
+        x:<span id="range_x_label">0</span>
+        <input id="range_x" type="range" min="0" max="365" value="0">
+      </li>
+      <li>
+        y:<span id="range_y_label">0</span>
+        <input id="range_y" type="range" min="0" max="365" value="0">
+      </li>
+      <li>
+        z:<span id="range_z_label">0</span>
+        <input id="range_z" type="range" min="0" max="365" value="0">
+      </li>
+      <li>
+        scale:<span id="scale_label">0</span>
+        <input id="scale" type="range" min="0" max="10" step="0.1" value="0.1">
+      </li>
+    </ul>
   </div>
 </body>
 <style>
   .option {
     position: fixed;
     top: 0;
+    right: 0;
     background: #fff;
+    list-style: none;
+    display: block;
+  }
+
+  .option li {
+    display: grid;
+    grid-template-columns: 50px 2rem 1fr;
   }
 </style>
 <script>
@@ -65,20 +88,25 @@
   $("#range_x").on("input", function (e) {
     var range = e.target
     rotate.x = range.value
-    console.log(box.getAttribute('rotation'));
+    $('#range_x_label').text(range.value)
     box.setAttribute('rotation', `${rotate.x} ${rotate.y} ${rotate.z}`);
   })
   $("#range_y").on("input", function (e) {
     var range = e.target
     rotate.y = range.value
-    console.log(box.getAttribute('rotation'));
+    $('#range_y_label').text(range.value)
     box.setAttribute('rotation', `${rotate.x} ${rotate.y} ${rotate.z}`);
   })
   $("#range_z").on("input", function (e) {
     var range = e.target
     rotate.z = range.value
-    console.log(box.getAttribute('rotation'));
+    $('#range_z_label').text(range.value)
     box.setAttribute('rotation', `${rotate.x} ${rotate.y} ${rotate.z}`);
+  })
+  $("#scale").on("input", function (e) {
+    var range = e.target
+    $('#scale_label').text(range.value)
+    box.setAttribute('rotation', `${range.value} ${range.value} ${range.value}`);
   })
 </script>
 
