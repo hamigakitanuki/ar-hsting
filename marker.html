@@ -62,16 +62,19 @@
   $("#range_x").on("input", function (e) {
     var range = e.target
     rotate.x = range.value
+    console.log(rotate);
     box.setAttribute('rotation', `${rotate.x} ${rotate.y} ${rotate.z}`);
   })
   $("#range_y").on("input", function (e) {
     var range = e.target
     rotate.y = range.value
+    console.log(rotate);
     box.setAttribute('rotation', `${rotate.x} ${rotate.y} ${rotate.z}`);
   })
   $("#range_z").on("input", function (e) {
     var range = e.target
     rotate.z = range.value
+    console.log(rotate);
     box.setAttribute('rotation', `${rotate.x} ${rotate.y} ${rotate.z}`);
   })
 </script>
