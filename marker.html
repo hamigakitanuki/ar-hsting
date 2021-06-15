@@ -1,47 +1,79 @@
 <!DOCTYPE html>
 <html>
 <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
-<script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.6.2/aframe/build/aframe-ar.js"> </script>
+<script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.6.2/aframe/build/aframe-ar.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 <script>
-  AFRAME.registerComponent('registerevents', {
+  // AFRAME.registerComponent('registerevents', {
 
-    init: function () {
-      var marker = this.el;
+  //   init: function () {
+  //     var marker = this.el;
 
-      // マーカーを検出したイベントの登録
-      marker.addEventListener('markerFound', function () {
-        var markerId = marker.id;
-        console.log('markerFound', markerId);
+  //     // マーカーを検出したイベントの登録
+  //     marker.addEventListener('markerFound', function () {
+  //       var markerId = marker.id;
+  //       console.log('markerFound', markerId);
 
-        // アニメーションの開始
-        document.querySelector('#animated-model').emit('markerfound');
-      });
+  //       // アニメーションの開始
+  //       document.querySelector('#animated-model').emit('markerfound');
+  //     });
 
-      // マーカーを見失ったイベントの登録
-      marker.addEventListener('markerLost', function () {
-        var markerId = marker.id;
-        console.log('markerLost', markerId);
+  //     // マーカーを見失ったイベントの登録
+  //     marker.addEventListener('markerLost', function () {
+  //       var markerId = marker.id;
+  //       console.log('markerLost', markerId);
 
-        // アニメーションの停止
-        document.querySelector('#animated-model').emit('markerlost');
-      });
-    }
-  });
+  //       // アニメーションの停止
+  //       document.querySelector('#animated-model').emit('markerlost');
+  //     });
+  //   }
+  // });
 </script>
 
 <body style="margin: 0px; overflow: hidden;">
   <a-scene embedded arjs>
     <a-marker registerevents emitevents="true" cursor="rayOrigin: mouse" id="animated-marker" type="pattern" url="pattern-marker.patt">
       <a-box id="animated-model" position="0 -1 0" scale="1 1 1" color="grey" rotation="45 45 45">
-        <a-animation attribute="position" from="0 0.5 0" to="0 5 0" dur="5000" repeat="indefinite" begin="markerfound" end="markerlost">
-        </a-animation>
       </a-box>
     </a-marker>
     <a-entity camera></a-entity>
   </a-scene>
-  <div>
-    <input type="range">
+  <div class="option">
+    <input id="range_x" type="range" min="0" max="365">
+    <input id="range_y" type="range" min="0" max="365">
+    <input id="range_z" type="range" min="0" max="365">
   </div>
 </body>
+<style>
+  .option {
+    position: fixed;
+    top: 0;
+    background: #fff;
+  }
+</style>
+<script>
+  var box = document.querySelector('#animated-model')
+  var rotate = {
+    x: 0,
+    y: 0,
+    z: 0,
+  }
+  $("#range_x").on("input", function (e) {
+    var range = e.target
+    rotate.x = range.value
+    setAttribute('rotate', `${rotate.x} ${rotate.y} ${rotate.z}`);
+  })
+  $("#range_y").on("input", function (e) {
+    var range = e.target
+    rotate.y = range.value
+    setAttribute('rotate', `${rotate.x} ${rotate.y} ${rotate.z}`);
+  })
+  $("#range_z").on("input", function (e) {
+    var range = e.target
+    rotate.z = range.value
+    setAttribute('rotate', `${rotate.x} ${rotate.y} ${rotate.z}`);
+  })
+</script>
 
 </html>
