@@ -38,7 +38,7 @@
       <a-asset-item id="uribo" src="NEWOPEN.glb"></a-asset-item>
     </a-assets>
     <a-marker registerevents emitevents="true" cursor="rayOrigin: mouse" id="animated-marker" type="pattern" url="pattern-marker.patt">
-      <a-entity id="animated-model" position="0 -1 0" gltf-model="#uribo" scale="0.1 0.1 0.1" scale="0.1 0.1 0.1"></a-entity>
+      <a-entity id="animated-model" position="0 -1 0" gltf-model="#uribo" scale="0.1 0.1 0.1"></a-entity>
     </a-marker>
     <a-entity camera></a-entity>
   </a-scene>
@@ -65,20 +65,20 @@
   $("#range_x").on("input", function (e) {
     var range = e.target
     rotate.x = range.value
-    console.log(rotate);
-    box.setAttribute('rotation', `${rotate.x} ${rotate.z}　${rotate.y}`);
+    console.log(box.getAttribute('rotation'));
+    box.setAttribute('rotation', `${rotate.x} ${rotate.y} ${rotate.z}`);
   })
   $("#range_y").on("input", function (e) {
     var range = e.target
     rotate.y = range.value
-    console.log(rotate);
-    box.setAttribute('rotation', `${rotate.x} ${rotate.z}　${rotate.y}`);
+    console.log(box.getAttribute('rotation'));
+    box.setAttribute('rotation', `${rotate.x} ${rotate.y} ${rotate.z}`);
   })
   $("#range_z").on("input", function (e) {
     var range = e.target
     rotate.z = range.value
-    console.log(rotate);
-    box.setAttribute('rotation', `${rotate.x} ${rotate.z}　${rotate.y}`);
+    console.log(box.getAttribute('rotation'));
+    box.setAttribute('rotation', `${rotate.x} ${rotate.y} ${rotate.z}`);
   })
 </script>
 
